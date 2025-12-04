@@ -11,21 +11,36 @@ dotenv.config();
 const app = express();
 const prisma = new PrismaClient();
 
-app.use(helmet());
+// Configurar Helmet para permitir EJS
+app.use(helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false
+}));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
-    secret : process.env.SESSION_SECRET,
-    resave : false,
-    saveUninitialized : true,
-    cookie: { httpOnly: true, sameSite: "strict"}
-
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { httpOnly: true, sameSite: "strict" }
 }));
 
 app.set("view engine", "ejs");
-app.set("views", path.join(process.cwd(), "src/views"));
+app.set("views", path.join(process. cwd(), "src/views"));
+
+// Ruta raíz
+app.get("/", (req, res) => {
+    res.redirect("/login");
+});
 
 app.use("/", authRoutes);
 app.use("/admin", adminRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
+
+// Cerrar Prisma correctamente
+process. on('SIGTERM', async () => {
+    await prisma.$disconnect();
+    process.exit(0);
+});

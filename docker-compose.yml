@@ -1,0 +1,43 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: honeypot-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: honeypot_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - honeypot-network
+
+  app:
+    build: .
+    container_name: honeypot-app
+    environment:
+      DATABASE_URL: "postgresql://postgres:admin123@postgres:5432/honeypot_db? schema=public"
+      SESSION_SECRET: "clave_segura_sesiones"
+      PORT: 3000
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - honeypot-network
+
+networks:
+  honeypot-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
