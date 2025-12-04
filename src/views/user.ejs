@@ -1,11 +1,199 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Panel de Usuario</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Usuario</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar h1 {
+            color: #f5576c;
+            font-size: 24px;
+        }
+
+        .navbar .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .navbar .badge {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .logout-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .logout-btn:hover {
+            background: #ff3838;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-card .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-card h2 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .welcome-card p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0. 2);
+            transition: all 0.3s ease;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card .icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Bienvenido Usuario</h1>
-  <p>Has iniciado sesión correctamente</p>
-  <a href="/logout">Cerrar sesión</a>
+    <div class="container">
+        <div class="navbar">
+            <h1>🛡️ Honeypot Security</h1>
+            <div class="user-info">
+                <span class="badge">✨ Usuario</span>
+                <a href="/logout" class="logout-btn">Cerrar Sesión</a>
+            </div>
+        </div>
+
+        <div class="welcome-card">
+            <div class="icon">🎉</div>
+            <h2>¡Bienvenido!</h2>
+            <p>Has iniciado sesión correctamente en el sistema Honeypot Security</p>
+            <p style="margin-top: 10px; font-size: 16px;">Tu cuenta está protegida con nuestro sistema de seguridad avanzado</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon">🔒</div>
+                <h3>Cuenta Segura</h3>
+                <p>Tu información está protegida con encriptación de nivel empresarial</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">📊</div>
+                <h3>Dashboard Personal</h3>
+                <p>Accede a tus estadísticas y actividad reciente</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">🔔</div>
+                <h3>Notificaciones</h3>
+                <p>Recibe alertas sobre actividad importante en tu cuenta</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">⚙️</div>
+                <h3>Configuración</h3>
+                <p>Personaliza tu experiencia y preferencias de seguridad</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
