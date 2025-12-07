@@ -35,7 +35,7 @@ Sigue estos pasos para levantar el proyecto en tu entorno local.
 
 ### 1. Clonar el repositorio
 
-git clone [https://github.com/TU_USUARIO/honeypot-project.git](https://github.com/TU_USUARIO/honeypot-project.git)
+git clone [https://github.com/gael-marquez/honeypot-project.git](https://github.com/gael-marquez/honeypot-project.git)
 cd honeypot-project
 
 
@@ -99,9 +99,9 @@ honeypot-project/
 
 ## 👥 Autores - Equipo 5 CS
 
-  * **[Nombre Integrante 1]** - *Configuración Docker y Backend*
-  * **[Nombre Integrante 2]** - *Seguridad y Base de Datos*
-  * **[Nombre Integrante 3]** - *Frontend y Documentación*
+  * **Hernandez Aranda Hector Alejandro**
+  * **Márquez Rodríguez Gael Alejandro** 
+  * **Trejo Hernández Brandon**
 
 
 **Escuela Superior de Cómputo (ESCOM) - Instituto Politécnico Nacional (IPN)**
